@@ -2,7 +2,7 @@
 package_manager = "yarn"
 
 [workspace]
-members = ["programs/*", "packages/*"]
+members = ["programs/*"]
 
 [features]
 resolution = true
@@ -15,7 +15,7 @@ my_anchor_project = "AgBHPG2xUS1iWmbvwdrjWxcNTqudqtwGoYGe1iPF7gDF"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Devnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
