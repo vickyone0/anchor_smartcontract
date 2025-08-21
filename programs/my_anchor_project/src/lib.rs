@@ -151,3 +151,31 @@ pub struct Initialize<'info> {
     pub user: Signer<'info>,
     pub system_program: Program<'info, System>,
 }
+
+
+use borsh::{BorshDeserialize, BorshSerialize};
+
+#[derive(BorshSerialize, BorshDeserialize, Debug)]
+struct MyData {
+    value: u32,
+    message: String,
+}
+
+fn main() -> Result<()> {
+
+    let data = MyData {
+        value: 12345,
+        message: "Hello, Borsh!".to_string(),
+
+    };
+
+    let serializd_data = data.try_to_vec()?;
+    println!("Serialized data: {:?}", serializd_data);
+
+    // Deserialize the data
+    let deserialized_data: MyData = MyData::try_from_slice(&serializd_data)?;
+    println!("Deserialized data: {:?}", deserialized_data);
+
+    Ok(())
+
+}
